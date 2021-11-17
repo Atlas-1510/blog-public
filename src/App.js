@@ -1,11 +1,11 @@
 import "./App.css";
-import Articles from "./components/Articles/Articles";
+import CardsContainer from "./components/CardsContainer/CardsContainer";
 
 function App() {
   return (
     <div className="App">
-      <h1>TESTING</h1>
-      <Articles />
+      <h1>Blog</h1>
+      <CardsContainer />
     </div>
   );
 }

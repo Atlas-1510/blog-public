@@ -1,5 +1,6 @@
 import React from "react";
 import useAxios from "../../hooks/useAxios";
+import Card from "../Card/Card";
 
 function Articles() {
   const { result: articles, error: isError } = useAxios(
@@ -10,7 +11,7 @@ function Articles() {
     <div>
       {isError && <p>Something went wrong</p>}
       {articles.map((article) => (
-        <li key={article._id}>{article.title}</li>
+        <Card article={article} />
       ))}
     </div>
   );
