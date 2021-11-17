@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import useAxios from "../../hooks/useAxios";
 
 function Articles() {
-  const [articles, setArticles] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:1015/articles")
-      .then((res) => res.json())
-      .then((fetched_articles) => setArticles(fetched_articles))
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  const { result: articles, error: isError } = useAxios(
+    "http://localhost:1015/articles"
+  );
 
   return (
     <div>
+      {isError && <p>Something went wrong</p>}
       {articles.map((article) => (
-        <li>{article.title}</li>
+        <li key={article._id}>{article.title}</li>
       ))}
     </div>
   );
