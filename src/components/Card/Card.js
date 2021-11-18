@@ -2,14 +2,10 @@ import React from "react";
 import testImage from "../../testImages/testImage.jpeg";
 import testProfileImage from "../../testImages/testProfileImage.png";
 import { Link } from "react-router-dom";
+import getFormattedDate from "../../utilities/getFormattedDate";
 
 function Article({ article }) {
-  const formattedDate = new Date(article.date).toLocaleDateString("en-us", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
-
+  const formattedDate = getFormattedDate(article.date);
   return (
     <Link key={article._id} to={`/${article._id}`}>
       <div className="w-[300px] h-96 border-0 rounded-lg overflow-hidden shadow-lg flex flex-col">
@@ -24,7 +20,7 @@ function Article({ article }) {
           </h2>
           <div className="flex flex-col justify-between flex-grow">
             <p className="text-primary-400 text-sm">{article.description}</p>
-            <div className="flex">
+            <div className="flex items-center">
               <img
                 src={testProfileImage}
                 alt="user profile"
