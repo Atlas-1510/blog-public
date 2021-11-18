@@ -14,12 +14,12 @@ function Article({ article }) {
           style={{ backgroundImage: `url(${testImage})` }}
         ></div>
         <div className="m-4 flex-grow flex flex-col">
-          <p className="text-sm font-normal text-secondary-500">Article</p>
-          <h2 className="text-xl font-bold py-2 text-primary-900">
+          <p className="text-sm font-normal text-highlight">Article</p>
+          <h2 className="text-xl font-bold py-2 text-primary">
             {article.title}
           </h2>
           <div className="flex flex-col justify-between flex-grow">
-            <p className="text-primary-400 text-sm">{article.description}</p>
+            <p className="text-secondary text-sm">{article.description}</p>
             <div className="flex items-center">
               <img
                 src={testProfileImage}
@@ -27,10 +27,10 @@ function Article({ article }) {
                 className=" border-0 rounded-full w-10 h-10"
               />
               <div className="mx-2">
-                <p className="text-sm text-primary-900">
+                <p className="text-sm text-primary">
                   {article.author.username}
                 </p>
-                <p className="text-sm text-primary-400">{formattedDate}</p>
+                <p className="text-sm text-secondary">{formattedDate}</p>
               </div>
             </div>
           </div>

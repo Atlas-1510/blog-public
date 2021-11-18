@@ -3,8 +3,8 @@ import CardsContainer from "../CardsContainer/CardsContainer";
 function Home() {
   return (
     <div className="font-roboto flex flex-col items-center min-w-[360px]">
-      <div className="flex flex-col items-center justify-center m-4 p-8 border-b border-primary-400">
-        <h1 className="text-3xl font-extrabold my-2 text-primary-900">
+      <div className="flex flex-col items-center justify-center m-4 p-8 border-b">
+        <h1 className="text-3xl font-extrabold my-2 text-primary">
           From the blog
         </h1>
         <p className=" text-primary-400 mt-2 text-center">

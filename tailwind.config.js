@@ -1,4 +1,4 @@
-const colors = require("tailwindcss/colors");
+// const colors = require("tailwindcss/colors");
 
 module.exports = {
   mode: "jit",
@@ -17,10 +17,11 @@ module.exports = {
         cardLayout: "repeat(auto-fill, minmax(300px, 1fr))",
       },
     },
-    colors: {
-      primary: colors.coolGray,
-      secondary: colors.blue,
-    },
+    // colors: {
+    // primary: colors.coolGray,
+    // secondary: colors.indigo,
+    // white: colors.white,
+    // },
   },
   variants: {
     extend: {},

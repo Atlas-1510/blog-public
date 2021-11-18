@@ -3,3 +3,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .text-primary {
+    @apply text-gray-800;
+  }
+
+  .text-secondary {
+    @apply text-gray-500;
+  }
+  .text-highlight {
+    @apply text-indigo-600;
+  }
+
+  .bg-highlight {
+    @apply bg-indigo-600;
+  }
+
+  .nav-link {
+    @apply m-2 px-4 py-2 border-0 rounded-lg text-secondary hover:text-black;
+  }
+}
