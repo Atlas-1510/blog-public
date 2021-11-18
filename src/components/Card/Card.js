@@ -7,7 +7,7 @@ import getFormattedDate from "../../utilities/getFormattedDate";
 function Article({ article }) {
   const formattedDate = getFormattedDate(article.date);
   return (
-    <Link key={article._id} to={`/${article._id}`}>
+    <Link key={article._id} to={`/articles/${article._id}`}>
       <div className="w-[300px] h-96 border-0 rounded-lg overflow-hidden shadow-lg flex flex-col">
         <div
           className="w-full h-32 bg-center bg-cover"
