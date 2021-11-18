@@ -6,7 +6,7 @@ function Header() {
       <h1 className="text-3xl font-extrabold my-2 text-primary-900">
         From the blog
       </h1>
-      <p className=" text-primary-400 mt-2">
+      <p className=" text-primary-400 mt-2 text-center">
         A collection of thoughts, musings, and random shouts into the void.
       </p>
     </div>
