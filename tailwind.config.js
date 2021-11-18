@@ -11,6 +11,9 @@ module.exports = {
       fontFamily: {
         roboto: ["Roboto"],
       },
+      gridTemplateColumns: {
+        cardLayout: "repeat(auto-fill, minmax(300px, 1fr))",
+      },
     },
   },
   variants: {

@@ -8,11 +8,10 @@ function Articles() {
   );
 
   return (
-    <div className="flex flex-col items-center m-2">
-      {isError && <p>Something went wrong</p>}
-      {articles.map((article) => (
-        <Card article={article} />
-      ))}
+    // Added custom grid-cols-cardLayout to tailwind config
+    <div className="grid justify-items-center gap-4 m-4 grid-cols-cardLayout">
+      {isError && <p className="text-gray-400">Something went wrong</p>}
+      {!isError && articles.map((article) => <Card article={article} />)}
     </div>
   );
 }

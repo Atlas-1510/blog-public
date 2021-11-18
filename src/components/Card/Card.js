@@ -12,7 +12,7 @@ function Article({ article }) {
   return (
     <div
       key={article._id}
-      className="w-[300px] h-96 border-0 rounded-lg overflow-hidden shadow-lg flex flex-col my-2"
+      className="w-[300px] h-96 border-0 rounded-lg overflow-hidden shadow-lg flex flex-col"
     >
       <div
         className="w-full h-32 bg-center bg-cover"
