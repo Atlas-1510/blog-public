@@ -9,7 +9,7 @@ function Articles() {
 
   return (
     // Added custom grid-cols-cardLayout to tailwind config
-    <div className="grid justify-items-center gap-4 m-4 grid-cols-cardLayout">
+    <div className="grid justify-items-center gap-4 m-4 grid-cols-cardLayout flex-grow">
       {isError && <p className="text-gray-400">Something went wrong</p>}
       {!isError && articles.map((article) => <Card article={article} />)}
     </div>
