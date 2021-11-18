@@ -8,7 +8,7 @@ function Articles() {
   );
 
   return (
-    <div>
+    <div className="flex flex-col items-center m-2">
       {isError && <p>Something went wrong</p>}
       {articles.map((article) => (
         <Card article={article} />
