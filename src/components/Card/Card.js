@@ -19,19 +19,23 @@ function Article({ article }) {
         style={{ backgroundImage: `url(${testImage})` }}
       ></div>
       <div className="m-4 flex-grow flex flex-col">
-        <p className="text-xs font-normal text-purple-500">Article</p>
-        <h2 className="text-xl font-bold py-2">{article.title}</h2>
+        <p className="text-sm font-normal text-secondary-500">Article</p>
+        <h2 className="text-xl font-bold py-2 text-primary-900">
+          {article.title}
+        </h2>
         <div className="flex flex-col justify-between flex-grow">
-          <p className="text-gray-400 text-sm">{article.description}</p>
+          <p className="text-primary-400 text-sm">{article.description}</p>
           <div className="flex">
             <img
               src={testProfileImage}
               alt="user profile"
-              className=" border rounded-full w-10 h-10"
+              className=" border-0 rounded-full w-10 h-10"
             />
             <div className="mx-2">
-              <p className="text-sm">{article.author.username}</p>
-              <p className="text-sm text-gray-400">{formattedDate}</p>
+              <p className="text-sm text-primary-900">
+                {article.author.username}
+              </p>
+              <p className="text-sm text-primary-400">{formattedDate}</p>
             </div>
           </div>
         </div>

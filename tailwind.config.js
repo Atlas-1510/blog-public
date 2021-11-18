@@ -1,3 +1,5 @@
+const colors = require("tailwindcss/colors");
+
 module.exports = {
   mode: "jit",
   purge: [
@@ -14,6 +16,10 @@ module.exports = {
       gridTemplateColumns: {
         cardLayout: "repeat(auto-fill, minmax(300px, 1fr))",
       },
+    },
+    colors: {
+      primary: colors.coolGray,
+      secondary: colors.blue,
     },
   },
   variants: {
