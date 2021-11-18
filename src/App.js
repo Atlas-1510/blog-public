@@ -1,14 +1,22 @@
-import Header from "./components/Header/Header";
-import CardsContainer from "./components/CardsContainer/CardsContainer";
+import Home from "./components/Home/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Article from "./components/Article/Article";
 import Footer from "./components/Footer/Footer";
+
+// Div inside BrowserRouter has min height of 90vh to account for the footer, which has a height of 10vh
+// This structure enables footer to remain the same across all article pages.
 
 function App() {
   return (
-    <div className="font-roboto flex flex-col items-center min-h-screen min-w-[360px]">
-      <Header />
-      <CardsContainer />
+    <BrowserRouter>
+      <div className="min-h-[90vh]">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path=":articleID" element={<Article />} />
+        </Routes>
+      </div>
       <Footer />
-    </div>
+    </BrowserRouter>
   );
 }
 
