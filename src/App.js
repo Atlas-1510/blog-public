@@ -11,21 +11,20 @@ import { KJUR, b64utoutf8 } from "jsrsasign";
 
 // Div inside BrowserRouter has min height of 90vh to account for the footer, which has a height of 10vh
 // This structure enables footer to remain the same across all pages.
-
 export const UserContext = createContext(null);
 
 function App() {
-  const { storedValue } = useLocalStorage("jwt", null);
-  console.log(`APP MAIN ${storedValue}`);
+  const { storedValue, clearValue } = useLocalStorage("jwt", null);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    console.log(`APP useEffect ${storedValue}`);
     if (storedValue) {
       const payload = KJUR.jws.JWS.readSafeJSONString(
         b64utoutf8(storedValue.split(".")[1])
       ).tokenPayload;
       setUser(payload);
+    } else {
+      setUser(null);
     }
   }, [storedValue]);
 
@@ -37,7 +36,10 @@ function App() {
             <Route path="/" element={<Navigate replace to="/articles" />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="signin" element={<SignIn />} />
-            <Route path="articles" element={<Articles />}>
+            <Route
+              path="articles"
+              element={<Articles clearValue={clearValue} />}
+            >
               <Route path=":articleID" element={<Article />} />
               <Route index element={<Home />} />
             </Route>

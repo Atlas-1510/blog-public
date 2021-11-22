@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 
 function useLocalStorage(key, initialValue) {
   const [storedValue, setStoredValue] = useState(() => {
@@ -31,10 +31,6 @@ function useLocalStorage(key, initialValue) {
       console.log(err);
     }
   };
-
-  useEffect(() => {
-    console.log(`The current value of storedValue is: ${storedValue}`);
-  }, [storedValue]);
 
   return { storedValue, setValue, clearValue };
 }

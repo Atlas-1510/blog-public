@@ -1,7 +1,6 @@
 import React from "react";
 import { useParams } from "react-router";
 import useAxios from "../../hooks/useAxios";
-import testImage from "../../testImages/testImage.jpeg";
 import testProfileImage from "../../testImages/testProfileImage.png";
 import getFormattedDate from "../../utilities/getFormattedDate";
 

@@ -2,11 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../App";
-import useLocalStorage from "../../hooks/useLocalStorage";
 
-function Header() {
+function Header({ clearValue }) {
   const user = useContext(UserContext);
-  const { clearValue } = useLocalStorage("jwt");
 
   const handleSignOut = (e) => {
     e.preventDefault();

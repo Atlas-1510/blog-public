@@ -2,10 +2,10 @@ import React from "react";
 import Header from "../Header/Header";
 import { Outlet } from "react-router";
 
-function Articles() {
+function Articles({ clearValue }) {
   return (
     <div className="flex-grow">
-      <Header />
+      <Header clearValue={clearValue} />
       <Outlet />
     </div>
   );
