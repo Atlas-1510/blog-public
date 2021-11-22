@@ -4,7 +4,7 @@ import { Outlet } from "react-router";
 
 function Articles() {
   return (
-    <div>
+    <div className="flex-grow">
       <Header />
       <Outlet />
     </div>

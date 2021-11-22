@@ -12,7 +12,7 @@ import Footer from "./components/Footer/Footer";
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-[90vh] bg-blueGray-50">
+      <div className="font-roboto min-h-[90vh] bg-blueGray-100 flex">
         <Routes>
           <Route path="/" element={<Navigate replace to="/articles" />} />
           <Route path="signup" element={<SignUp />} />

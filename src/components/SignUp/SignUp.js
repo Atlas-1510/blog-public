@@ -1,7 +1,83 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 function SignUp() {
-  return <div>Sign Up page</div>;
+  const isMounted = useRef(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+    setUsername(e.target[0].value);
+    setPassword(e.target[1].value);
+  };
+
+  useEffect(() => {
+    async function generateUser() {
+      try {
+        const result = await axios.post("http://localhost:1015/signup", {
+          username: username,
+          password: password,
+        });
+        console.log(result.data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    if (isMounted.current) {
+      generateUser();
+    } else {
+      isMounted.current = true;
+    }
+  }, [username, password]);
+
+  return (
+    <div className=" flex flex-col items-center flex-grow">
+      <nav className="w-full flex justify-end p-4">
+        <Link to="/" className="nav-link">
+          Home
+        </Link>
+      </nav>
+      <div className="w-full flex-grow grid place-items-center ">
+        <form
+          onSubmit={(e) => formSubmitHandler(e)}
+          className="flex flex-col w-10/12 md:w-1/3 bg-white p-4 border-0 rounded-lg shadow-lg"
+        >
+          <h1 className="text-2xl font-bold text-primary text-center">
+            Sign up
+          </h1>
+          <div className="mt-2 flex flex-col">
+            <label for="username" className="form-label">
+              Name
+            </label>
+            <input
+              type="text"
+              name="username"
+              autoComplete="off"
+              id="username"
+              placeholder="Jane Doe"
+              className="username-input"
+            />
+          </div>
+          <div className="mt-2 flex flex-col">
+            <label for="password" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              className="username-input"
+            />
+          </div>
+          <input
+            type="submit"
+            className="nav-link bg-highlight text-white mx-0 mt-10 hover:bg-indigo-700 hover:text-white"
+          />
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default SignUp;

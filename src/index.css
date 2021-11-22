@@ -6,7 +6,7 @@
 
 @layer components {
   .text-primary {
-    @apply text-gray-800;
+    @apply text-blueGray-800;
   }
 
   .text-secondary {
@@ -21,6 +21,14 @@
   }
 
   .nav-link {
-    @apply m-2 px-4 py-2 border-0 rounded-lg text-secondary hover:text-black;
+    @apply m-2 px-4 py-2 border-0 rounded-lg text-secondary hover:text-black cursor-pointer;
+  }
+
+  .username-input {
+    @apply border border-gray-300 rounded-lg py-1 px-2 text-secondary;
+  }
+
+  .form-label {
+    @apply text-primary py-1;
   }
 }
