@@ -7,11 +7,16 @@ function SignIn() {
   const isMounted = useRef(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const { setValue } = useLocalStorage("jwt", null);
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    setUsername(e.target[0].value);
-    setPassword(e.target[1].value);
+    if (e.target[0].value === "" || e.target[1].value === "") {
+      setError("Missing credentials");
+    } else {
+      setUsername(e.target[0].value);
+      setPassword(e.target[1].value);
+    }
   };
 
   useEffect(() => {
@@ -25,7 +30,8 @@ function SignIn() {
         setValue(result.data);
         window.location.href = "http://localhost:3000/articles";
       } catch (err) {
-        console.log(err);
+        setError(err.response.data.message);
+        console.log(err.response.data);
       }
     }
     if (isMounted.current) {
@@ -74,9 +80,13 @@ function SignIn() {
               className="username-input"
             />
           </div>
+          {/* Error Messages */}
+          <div className="text-highlight my-2 empty:h-6">
+            {error && <p>{error}</p>}
+          </div>
           <input
             type="Submit"
-            className="nav-link bg-highlight text-white mx-0 mt-10 hover:bg-indigo-700 hover:text-white"
+            className="nav-link bg-highlight text-white mx-0 hover:bg-indigo-700 hover:text-white"
           />
         </form>
       </div>
