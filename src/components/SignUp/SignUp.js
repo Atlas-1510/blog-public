@@ -1,39 +1,47 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useReducer } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
-function SignUp() {
-  const isMounted = useRef(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const { setValue } = useLocalStorage("jwt", null);
-  const formSubmitHandler = (e) => {
-    e.preventDefault();
-    setUsername(e.target[0].value);
-    setPassword(e.target[1].value);
-  };
+const flashReducer = (state, action) => {
+  switch (action.type) {
+    case "FLASH":
+      return action.payload || false;
+    case "RESET":
+      return "";
+    default:
+      throw new Error("Reducer dispatch type not found");
+  }
+};
 
-  useEffect(() => {
-    async function generateUser() {
-      try {
-        const result = await axios.post("http://localhost:1015/signup", {
-          username: username,
-          password: password,
-        });
-        console.log(result.data);
+function SignUp() {
+  const [flash, dispatch] = useReducer(flashReducer, "");
+  const { setValue } = useLocalStorage("jwt", null);
+
+  const formSubmitHandler = async (e) => {
+    e.preventDefault();
+    const username = e.target[0].value;
+    const password = e.target[1].value;
+    dispatch({ type: "RESET" });
+    if (username === "" || password === "") {
+      dispatch({ type: "FLASH", payload: "Missing credentials" });
+      return;
+    }
+    try {
+      const result = await axios.post("http://localhost:1015/signup", {
+        username,
+        password,
+      });
+      if (result.data.message) {
+        dispatch({ type: "FLASH", payload: result.data.message });
+      } else {
         setValue(result.data);
         window.location.href = "http://localhost:3000/articles";
-      } catch (err) {
-        console.log(err);
       }
+    } catch (err) {
+      dispatch({ type: "FLASH", payload: err.message });
     }
-    if (isMounted.current) {
-      generateUser();
-    } else {
-      isMounted.current = true;
-    }
-  }, [username, password, setValue]);
+  };
 
   return (
     <div className=" flex flex-col items-center flex-grow">
@@ -74,9 +82,13 @@ function SignUp() {
               className="username-input"
             />
           </div>
+          {/* Error Messages */}
+          <div className="text-highlight my-2">
+            <p className="empty:h-6">{flash}</p>
+          </div>
           <input
-            type="submit"
-            className="nav-link bg-highlight text-white mx-0 mt-10 hover:bg-indigo-700 hover:text-white"
+            type="Submit"
+            className="nav-link bg-highlight text-white mx-0 hover:bg-indigo-700 hover:text-white"
           />
         </form>
       </div>
