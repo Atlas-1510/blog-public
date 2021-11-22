@@ -7,7 +7,7 @@ function SignUp() {
   const isMounted = useRef(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [storedValue, setValue] = useLocalStorage("jwt", null);
+  const { setValue } = useLocalStorage("jwt", null);
   const formSubmitHandler = (e) => {
     e.preventDefault();
     setUsername(e.target[0].value);

@@ -15,16 +15,16 @@ import { KJUR, b64utoutf8 } from "jsrsasign";
 export const UserContext = createContext(null);
 
 function App() {
-  const [storedValue, setValue] = useLocalStorage("jwt", null);
+  const { storedValue } = useLocalStorage("jwt", null);
+  console.log(`APP MAIN ${storedValue}`);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    console.log(storedValue);
+    console.log(`APP useEffect ${storedValue}`);
     if (storedValue) {
       const payload = KJUR.jws.JWS.readSafeJSONString(
         b64utoutf8(storedValue.split(".")[1])
       ).tokenPayload;
-      console.log(payload);
       setUser(payload);
     }
   }, [storedValue]);

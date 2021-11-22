@@ -1,5 +1,4 @@
-import { useState, useCallback } from "react";
-// https://stackoverflow.com/questions/62105880/react-context-api-vs-local-storage
+import { useState, useCallback, useEffect } from "react";
 
 function useLocalStorage(key, initialValue) {
   const [storedValue, setStoredValue] = useState(() => {
@@ -15,8 +14,8 @@ function useLocalStorage(key, initialValue) {
   const setValue = useCallback(
     (value) => {
       try {
-        window.localStorage.setItem(key, JSON.stringify(value));
         setStoredValue(value);
+        window.localStorage.setItem(key, JSON.stringify(value));
       } catch (err) {
         console.log(err);
       }
@@ -24,7 +23,20 @@ function useLocalStorage(key, initialValue) {
     [key]
   );
 
-  return [storedValue, setValue];
+  const clearValue = () => {
+    try {
+      setStoredValue(null);
+      window.localStorage.removeItem(key);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    console.log(`The current value of storedValue is: ${storedValue}`);
+  }, [storedValue]);
+
+  return { storedValue, setValue, clearValue };
 }
 
 export default useLocalStorage;
