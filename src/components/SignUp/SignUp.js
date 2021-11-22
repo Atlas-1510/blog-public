@@ -51,7 +51,7 @@ function SignUp() {
             Sign up
           </h1>
           <div className="mt-2 flex flex-col">
-            <label for="username" className="form-label">
+            <label htmlFor="username" className="form-label">
               Name
             </label>
             <input
@@ -64,7 +64,7 @@ function SignUp() {
             />
           </div>
           <div className="mt-2 flex flex-col">
-            <label for="password" className="form-label">
+            <label htmlFor="password" className="form-label">
               Password
             </label>
             <input
