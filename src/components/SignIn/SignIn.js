@@ -1,45 +1,47 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useReducer } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
-function SignIn() {
-  const isMounted = useRef(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const { setValue } = useLocalStorage("jwt", null);
-  const formSubmitHandler = (e) => {
-    e.preventDefault();
-    if (e.target[0].value === "" || e.target[1].value === "") {
-      setError("Missing credentials");
-    } else {
-      setUsername(e.target[0].value);
-      setPassword(e.target[1].value);
-    }
-  };
+const flashReducer = (state, action) => {
+  switch (action.type) {
+    case "FLASH":
+      return action.payload || false;
+    case "RESET":
+      return "";
+    default:
+      throw new Error("Reducer dispatch type not found");
+  }
+};
 
-  useEffect(() => {
-    async function getUser() {
-      try {
-        const result = await axios.post("http://localhost:1015/login", {
-          username: username,
-          password: password,
-        });
-        console.log(result.data);
+function SignIn() {
+  const [flash, dispatch] = useReducer(flashReducer, "");
+  const { setValue } = useLocalStorage("jwt", null);
+
+  const formSubmitHandler = async (e) => {
+    e.preventDefault();
+    const username = e.target[0].value;
+    const password = e.target[1].value;
+    dispatch({ type: "RESET" });
+    if (username === "" || password === "") {
+      dispatch({ type: "FLASH", payload: "Missing credentials" });
+      return;
+    }
+    try {
+      const result = await axios.post("http://localhost:1015/login", {
+        username,
+        password,
+      });
+      if (result.data.message) {
+        dispatch({ type: "FLASH", payload: result.data.message });
+      } else {
         setValue(result.data);
         window.location.href = "http://localhost:3000/articles";
-      } catch (err) {
-        setError(err.response.data.message);
-        console.log(err.response.data);
       }
+    } catch (err) {
+      dispatch({ type: "FLASH", payload: err.message });
     }
-    if (isMounted.current) {
-      getUser();
-    } else {
-      isMounted.current = true;
-    }
-  }, [username, password, setValue]);
+  };
 
   return (
     <div className=" flex flex-col items-center flex-grow">
@@ -81,8 +83,8 @@ function SignIn() {
             />
           </div>
           {/* Error Messages */}
-          <div className="text-highlight my-2 empty:h-6">
-            {error && <p>{error}</p>}
+          <div className="text-highlight my-2">
+            <p className="empty:h-6">{flash}</p>
           </div>
           <input
             type="Submit"
