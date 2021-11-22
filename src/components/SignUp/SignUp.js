@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 function SignUp() {
   const isMounted = useRef(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [storedValue, setValue] = useLocalStorage("jwt", null);
   const formSubmitHandler = (e) => {
     e.preventDefault();
     setUsername(e.target[0].value);
@@ -20,6 +22,8 @@ function SignUp() {
           password: password,
         });
         console.log(result.data);
+        setValue(result.data);
+        window.location.href = "http://localhost:3000/articles";
       } catch (err) {
         console.log(err);
       }
@@ -29,7 +33,7 @@ function SignUp() {
     } else {
       isMounted.current = true;
     }
-  }, [username, password]);
+  }, [username, password, setValue]);
 
   return (
     <div className=" flex flex-col items-center flex-grow">
