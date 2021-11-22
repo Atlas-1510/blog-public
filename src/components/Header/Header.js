@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../App";
 
 function Header() {
+  const user = useContext(UserContext);
+  console.log(user);
+
   return (
     <nav className="w-full flex justify-end p-4">
       <Link to="/" className="nav-link">
