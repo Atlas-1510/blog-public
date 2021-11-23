@@ -34,7 +34,16 @@ function Header({ clearValue }) {
   } else {
     return (
       <nav className="w-full flex justify-between items-center p-4">
-        <h1 className=" text-xl text-secondary">Hello {`${user.username}`}</h1>
+        <div className="flex items-center">
+          <img
+            src={user.profileImage}
+            alt="user profile"
+            className=" border-0 rounded-full w-14 h-14 mt-2"
+          />
+          <h1 className="ml-4 text-xl text-secondary">
+            Hello {`${user.username}`}
+          </h1>
+        </div>
         <div className="flex items-center">
           <NavLink
             end
