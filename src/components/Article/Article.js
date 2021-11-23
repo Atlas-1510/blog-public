@@ -1,8 +1,6 @@
-import { useContext, useState } from "react";
-import { UserContext } from "../../App";
+import { useState } from "react";
 import { useParams } from "react-router";
 import useAxios from "../../hooks/useAxios";
-import testProfileImage from "../../testImages/testProfileImage.png";
 import getFormattedDate from "../../utilities/getFormattedDate";
 import CommentForm from "../CommentForm/CommentForm";
 import CommentsContainer from "../CommentsContainer/CommentsContainer";
@@ -11,7 +9,6 @@ import CommentsContainer from "../CommentsContainer/CommentsContainer";
 
 function Article() {
   const params = useParams();
-  const user = useContext(UserContext);
   const { result: article, error: isError } = useAxios(
     `http://localhost:1015/articles/${params.articleID}`
   );
@@ -31,7 +28,7 @@ function Article() {
             </h1>
             <div className="flex items-center">
               <img
-                src={testProfileImage}
+                src={article.author.profileImage}
                 alt="user profile"
                 className=" border-0 rounded-full w-14 h-14"
               />
