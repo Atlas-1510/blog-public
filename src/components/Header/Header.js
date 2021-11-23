@@ -29,12 +29,17 @@ function Header({ clearValue }) {
     return (
       <nav className="w-full flex justify-between items-center p-4">
         <h1 className=" text-xl text-secondary">Hello {`${user.username}`}</h1>
-        <button
-          onClick={(e) => handleSignOut(e)}
-          className="nav-link bg-highlight text-white hover:text-white hover:bg-indigo-700"
-        >
-          Sign Out
-        </button>
+        <div className="flex items-center">
+          <Link to="/" className="nav-link">
+            Home
+          </Link>
+          <button
+            onClick={(e) => handleSignOut(e)}
+            className="nav-link bg-highlight text-white hover:text-white hover:bg-indigo-700"
+          >
+            Sign Out
+          </button>
+        </div>
       </nav>
     );
   }
