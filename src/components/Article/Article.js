@@ -44,7 +44,7 @@ function Article() {
           <p className="my-10">{article.content}</p>
         </div>
       )}
-      <CommentForm />
+      <CommentForm articleID={params.articleID} />
     </div>
   );
 }
