@@ -28,7 +28,7 @@ function Header({ clearValue }) {
   } else {
     return (
       <nav className="w-full flex justify-between items-center p-4">
-        <h1 className=" text-lg text-secondary">Hello {`${user.username}`}</h1>
+        <h1 className=" text-xl text-secondary">Hello {`${user.username}`}</h1>
         <button
           onClick={(e) => handleSignOut(e)}
           className="nav-link bg-highlight text-white hover:text-white hover:bg-indigo-700"
