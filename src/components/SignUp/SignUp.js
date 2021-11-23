@@ -86,10 +86,7 @@ function SignUp() {
           <div className="text-highlight my-2">
             <p className="empty:h-6">{flash}</p>
           </div>
-          <input
-            type="Submit"
-            className="nav-link bg-highlight text-white mx-0 hover:bg-indigo-700 hover:text-white"
-          />
+          <input type="Submit" className="highlight-button mx-0" />
         </form>
       </div>
     </div>

@@ -31,4 +31,8 @@
   .form-label {
     @apply text-primary py-1;
   }
+
+  .highlight-button {
+    @apply nav-link bg-highlight text-white hover:text-white hover:bg-indigo-700;
+  }
 }

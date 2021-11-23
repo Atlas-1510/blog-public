@@ -20,10 +20,7 @@ function Header({ clearValue }) {
         <Link to="/signin" className="nav-link">
           Sign in
         </Link>
-        <Link
-          to="/signup"
-          className="nav-link bg-highlight text-white hover:text-white hover:bg-indigo-700"
-        >
+        <Link to="/signup" className="highlight-button">
           Sign up
         </Link>
       </nav>
