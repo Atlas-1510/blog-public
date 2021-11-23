@@ -1,13 +1,16 @@
-import React from "react";
+import { useContext } from "react";
+import { UserContext } from "../../App";
 import { useParams } from "react-router";
 import useAxios from "../../hooks/useAxios";
 import testProfileImage from "../../testImages/testProfileImage.png";
 import getFormattedDate from "../../utilities/getFormattedDate";
+import CommentForm from "../CommentForm/CommentForm";
 
 // TODO: Replace 'loading' indicator with an actual spinning indicator
 
 function Article() {
   const params = useParams();
+  const user = useContext(UserContext);
   const { result: article, error: isError } = useAxios(
     `http://localhost:1015/articles/${params.articleID}`
   );
@@ -41,6 +44,7 @@ function Article() {
           <p className="my-10">{article.content}</p>
         </div>
       )}
+      <CommentForm />
     </div>
   );
 }
