@@ -1,6 +1,5 @@
 import React from "react";
 import testImage from "../../testImages/testImage.jpeg";
-import testProfileImage from "../../testImages/testProfileImage.png";
 import { Link } from "react-router-dom";
 import getFormattedDate from "../../utilities/getFormattedDate";
 
@@ -22,7 +21,7 @@ function Article({ article }) {
             <p className="text-secondary text-sm">{article.description}</p>
             <div className="flex items-center">
               <img
-                src={testProfileImage}
+                src={article.author.profileImage}
                 alt="user profile"
                 className=" border-0 rounded-full w-10 h-10"
               />
