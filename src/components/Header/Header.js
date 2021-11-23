@@ -14,7 +14,13 @@ function Header({ clearValue }) {
   if (!user) {
     return (
       <nav className="w-full flex justify-end p-4">
-        <NavLink to="/" className="nav-link">
+        <NavLink
+          end
+          to="/articles"
+          className={({ isActive }) =>
+            isActive ? "active-nav-link" : "nav-link"
+          }
+        >
           Home
         </NavLink>
         <NavLink to="/signin" className="nav-link">
