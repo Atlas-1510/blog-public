@@ -30,23 +30,25 @@ function App() {
 
   return (
     <UserContext.Provider value={user}>
-      <BrowserRouter>
-        <div className="font-roboto min-h-[90vh] bg-blueGray-100 flex">
-          <Routes>
-            <Route path="/" element={<Navigate replace to="/articles" />} />
-            <Route path="signup" element={<SignUp />} />
-            <Route path="signin" element={<SignIn />} />
-            <Route
-              path="articles"
-              element={<Articles clearValue={clearValue} />}
-            >
-              <Route path=":articleID" element={<Article />} />
-              <Route index element={<Home />} />
-            </Route>
-          </Routes>
-        </div>
-        <Footer />
-      </BrowserRouter>
+      <div className="min-w-[360px]">
+        <BrowserRouter>
+          <div className="font-roboto min-h-[90vh] bg-blueGray-100 flex">
+            <Routes>
+              <Route path="/" element={<Navigate replace to="/articles" />} />
+              <Route path="signup" element={<SignUp />} />
+              <Route path="signin" element={<SignIn />} />
+              <Route
+                path="articles"
+                element={<Articles clearValue={clearValue} />}
+              >
+                <Route path=":articleID" element={<Article />} />
+                <Route index element={<Home />} />
+              </Route>
+            </Routes>
+          </div>
+          <Footer />
+        </BrowserRouter>
+      </div>
     </UserContext.Provider>
   );
 }
