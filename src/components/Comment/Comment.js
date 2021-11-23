@@ -1,5 +1,4 @@
 import React from "react";
-import testProfileImage from "../../testImages/testProfileImage.png";
 import getFormattedDate from "../../utilities/getFormattedDate";
 
 function Comment({ comment }) {
@@ -9,7 +8,7 @@ function Comment({ comment }) {
       <div className="flex justify-between items-center w-full">
         <div className="flex items-center">
           <img
-            src={testProfileImage}
+            src={comment.author.profileImage}
             alt="user profile"
             className=" border-0 rounded-full w-12 h-12"
           />

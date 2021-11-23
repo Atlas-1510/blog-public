@@ -1,9 +1,8 @@
 import React, { useContext, useState, useReducer } from "react";
-import testProfileImage from "../../testImages/testProfileImage.png";
+
 import axios from "axios";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { UserContext } from "../../App";
-import { objectExpression } from "@babel/types";
 
 const flashReducer = (state, action) => {
   switch (action.type) {
@@ -68,7 +67,7 @@ function CommentForm({ articleID, setTriggerGetComments }) {
           className="flex flex-grow"
         >
           <img
-            src={testProfileImage}
+            src={user.profileImage}
             alt="user profile"
             className=" border-0 rounded-full w-14 h-14 mt-2"
           />
