@@ -4,7 +4,7 @@ import axios from "axios";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { UserContext } from "../../App";
 
-function CommentForm({ articleID }) {
+function CommentForm({ articleID, setTriggerGetComments }) {
   const user = useContext(UserContext);
   const { storedValue: token } = useLocalStorage("jwt", null);
   const [commentInput, setCommentInput] = useState("");
@@ -24,6 +24,7 @@ function CommentForm({ articleID }) {
       );
       console.log(result);
       setCommentInput("");
+      setTriggerGetComments(true);
     } catch (err) {
       console.log(err);
     }

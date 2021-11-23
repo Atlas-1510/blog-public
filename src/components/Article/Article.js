@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../App";
 import { useParams } from "react-router";
 import useAxios from "../../hooks/useAxios";
 import testProfileImage from "../../testImages/testProfileImage.png";
 import getFormattedDate from "../../utilities/getFormattedDate";
 import CommentForm from "../CommentForm/CommentForm";
+import CommentsContainer from "../CommentsContainer/CommentsContainer";
 
 // TODO: Replace 'loading' indicator with an actual spinning indicator
 
@@ -14,6 +15,7 @@ function Article() {
   const { result: article, error: isError } = useAxios(
     `http://localhost:1015/articles/${params.articleID}`
   );
+  const [triggerGetComments, setTriggerGetComments] = useState(true);
 
   const formattedDate = getFormattedDate(article.date);
   return (
@@ -44,7 +46,15 @@ function Article() {
           <p className="my-10">{article.content}</p>
         </div>
       )}
-      <CommentForm articleID={params.articleID} />
+      <CommentForm
+        articleID={params.articleID}
+        setTriggerGetComments={setTriggerGetComments}
+      />
+      <CommentsContainer
+        articleID={params.articleID}
+        triggerGetComments={triggerGetComments}
+        setTriggerGetComments={setTriggerGetComments}
+      />
     </div>
   );
 }
