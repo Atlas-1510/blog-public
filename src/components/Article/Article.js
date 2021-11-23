@@ -25,10 +25,8 @@ function Article() {
       {!isError && article && (
         <div className="flex flex-col items-center justify-center w-10/12 my-10">
           <div className="flex flex-col items-center justify-center text-center">
-            <span className="text-lg font-normal text-secondary-500">
-              Article
-            </span>
-            <h1 className="text-3xl font-bold pt-3 pb-5 text-primary-900">
+            <span className="text-lg font-normal text-secondary">Article</span>
+            <h1 className="text-3xl font-bold pt-3 pb-5 text-primary">
               {article.title}
             </h1>
             <div className="flex items-center">
@@ -38,8 +36,8 @@ function Article() {
                 className=" border-0 rounded-full w-14 h-14"
               />
               <div className="mx-2">
-                <p className=" text-primary-900">{article.author.username}</p>
-                <p className=" text-primary-400">{formattedDate}</p>
+                <p className=" text-primary">{article.author.username}</p>
+                <p className=" text-primary">{formattedDate}</p>
               </div>
             </div>
           </div>
