@@ -4,6 +4,7 @@ import useAxios from "../../hooks/useAxios";
 import getFormattedDate from "../../utilities/getFormattedDate";
 import CommentForm from "../CommentForm/CommentForm";
 import CommentsContainer from "../CommentsContainer/CommentsContainer";
+import parse from "html-react-parser";
 
 // TODO: Replace 'loading' indicator with an actual spinning indicator
 
@@ -33,12 +34,13 @@ function Article() {
                 className=" border-0 rounded-full w-14 h-14"
               />
               <div className="mx-2">
-                <p className=" text-primary">{article.author.username}</p>
-                <p className=" text-primary">{formattedDate}</p>
+                <p className="text-primary">{article.author.username}</p>
+                <p className="text-primary">{formattedDate}</p>
               </div>
             </div>
           </div>
-          <p className="my-10">{article.content}</p>
+          <div className="my-10">{parse(article.content)}</div>
+          <h1>Test</h1>
         </div>
       )}
       <CommentForm
