@@ -39,7 +39,9 @@ function Article() {
               </div>
             </div>
           </div>
-          <div className="my-10 prose">{parse(article.content)}</div>
+          <div className="my-10 prose text-left min-w-full">
+            {parse(article.content)}
+          </div>
         </div>
       )}
       <CommentForm
