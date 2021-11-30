@@ -2,7 +2,7 @@ import React from "react";
 import useAxios from "../../hooks/useAxios";
 import Card from "../Card/Card";
 
-function Articles() {
+function CardsContainer() {
   const { result: articles, error: isError } = useAxios(
     "http://localhost:1015/articles"
   );
@@ -18,4 +18,4 @@ function Articles() {
   );
 }
 
-export default Articles;
+export default CardsContainer;

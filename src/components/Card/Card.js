@@ -3,7 +3,7 @@ import testImage from "../../testImages/testImage.jpeg";
 import { Link } from "react-router-dom";
 import getFormattedDate from "../../utilities/getFormattedDate";
 
-function Article({ article }) {
+function Card({ article }) {
   const formattedDate = getFormattedDate(article.date);
   return (
     <Link key={article._id} to={`/articles/${article._id}`}>
@@ -39,4 +39,4 @@ function Article({ article }) {
   );
 }
 
-export default Article;
+export default Card;
