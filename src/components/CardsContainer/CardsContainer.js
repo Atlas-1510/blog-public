@@ -4,7 +4,7 @@ import Card from "../Card/Card";
 
 function CardsContainer() {
   const { result: articles, error: isError } = useAxios(
-    `http://localhost:${process.env.REACT_APP_API_PORT}/articles`
+    `${process.env.REACT_APP_API_LOCALHOST_PORT}/articles`
   );
 
   return (

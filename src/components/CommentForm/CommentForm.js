@@ -34,7 +34,7 @@ function CommentForm({ articleID, setTriggerGetComments }) {
     }
     try {
       const result = await axios.post(
-        `http://localhost:${process.env.REACT_APP_API_PORT}/comments`,
+        `${process.env.REACT_APP_API_LOCALHOST_PORT}/comments`,
         {
           content,
           article: articleID,
