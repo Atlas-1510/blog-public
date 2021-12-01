@@ -15,7 +15,7 @@ function Article() {
   );
   const [triggerGetComments, setTriggerGetComments] = useState(true);
 
-  const formattedDate = getFormattedDate(article.date);
+  const formattedDate = article ? getFormattedDate(article.date) : null;
   return (
     <div className="flex flex-col items-center justify-center text-center">
       {isError && <p className="text-gray-400">Something went wrong</p>}
