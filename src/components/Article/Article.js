@@ -11,7 +11,7 @@ import parse from "html-react-parser";
 function Article() {
   const params = useParams();
   const { result: article, error: isError } = useAxios(
-    `http://localhost:1015/articles/${params.articleID}`
+    `http://localhost:${process.env.REACT_APP_API_PORT}/articles/${params.articleID}`
   );
   const [triggerGetComments, setTriggerGetComments] = useState(true);
 

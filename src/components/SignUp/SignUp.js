@@ -28,15 +28,18 @@ function SignUp() {
       return;
     }
     try {
-      const result = await axios.post("http://localhost:1015/signup", {
-        username,
-        password,
-      });
+      const result = await axios.post(
+        `http://localhost:${process.env.REACT_APP_API_PORT}/signup`,
+        {
+          username,
+          password,
+        }
+      );
       if (result.data.message) {
         dispatch({ type: "FLASH", payload: result.data.message });
       } else {
         setValue(result.data);
-        window.location.href = "http://localhost:3000/articles";
+        window.location.href = `http://localhost:3000/articles`;
       }
     } catch (err) {
       dispatch({ type: "FLASH", payload: err.message });
