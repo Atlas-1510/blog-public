@@ -39,7 +39,7 @@ function SignIn() {
         dispatch({ type: "FLASH", payload: result.data.message });
       } else {
         setValue(result.data);
-        window.location.href = `http://localhost:3000/articles`;
+        window.location.href = `/articles`;
       }
     } catch (err) {
       dispatch({ type: "FLASH", payload: err.message });
