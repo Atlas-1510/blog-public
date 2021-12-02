@@ -7,6 +7,8 @@ function CardsContainer() {
     `${process.env.REACT_APP_API_LOCALHOST_PORT}/articles`
   );
 
+  console.log(articles);
+
   return (
     // Added custom grid-cols-cardLayout to tailwind config
     <div className="grid justify-items-center gap-4 m-4 grid-cols-cardLayout flex-grow w-10/12">
