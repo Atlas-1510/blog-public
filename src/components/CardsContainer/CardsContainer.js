@@ -11,9 +11,10 @@ function CardsContainer() {
     // Added custom grid-cols-cardLayout to tailwind config
     <div className="grid justify-items-center gap-4 m-4 grid-cols-cardLayout flex-grow w-10/12">
       {isError && <p className="text-gray-400">Something went wrong</p>}
+      {!isError && !articles && <p className="text-gray-400">Loading</p>}
       {!isError &&
-        Array.isArray(articles) &&
-        articles.map((article) => <Card article={article} />)}
+        articles &&
+        articles.map((article) => <Card key={article._id} article={article} />)}
     </div>
   );
 }

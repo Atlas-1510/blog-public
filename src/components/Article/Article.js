@@ -15,46 +15,52 @@ function Article() {
   );
   const [triggerGetComments, setTriggerGetComments] = useState(true);
 
-  const formattedDate = article ? getFormattedDate(article.date) : null;
-  return (
-    <div className="flex flex-col items-center justify-center text-center">
-      {isError && <p className="text-gray-400">Something went wrong</p>}
-      {!isError && !article && <p className="text-gray-400">Loading</p>}
-      {!isError && article && (
-        <div className="flex flex-col items-center justify-center w-10/12 my-10">
-          <div className="flex flex-col items-center justify-center text-center">
-            <span className="text-lg font-normal text-secondary">Article</span>
-            <h1 className="text-3xl font-bold pt-3 pb-5 text-primary">
-              {article.title}
-            </h1>
-            <div className="flex items-center">
-              <img
-                src={article.author.profileImage}
-                alt="user profile"
-                className=" border-0 rounded-full w-14 h-14"
-              />
-              <div className="mx-2">
-                <p className="text-primary">{article.author.username}</p>
-                <p className="text-primary">{formattedDate}</p>
+  if (article) {
+    const formattedDate = article ? getFormattedDate(article.date) : null;
+    return (
+      <div className="flex flex-col items-center justify-center text-center">
+        {isError && <p className="text-gray-400">Something went wrong</p>}
+        {!isError && !article && <p className="text-gray-400">Loading</p>}
+        {!isError && article && (
+          <div className="flex flex-col items-center justify-center w-10/12 my-10">
+            <div className="flex flex-col items-center justify-center text-center">
+              <span className="text-lg font-normal text-secondary">
+                Article
+              </span>
+              <h1 className="text-3xl font-bold pt-3 pb-5 text-primary">
+                {article.title}
+              </h1>
+              <div className="flex items-center">
+                <img
+                  src={article.author.profileImage}
+                  alt="user profile"
+                  className=" border-0 rounded-full w-14 h-14"
+                />
+                <div className="mx-2">
+                  <p className="text-primary">{article.author.username}</p>
+                  <p className="text-primary">{formattedDate}</p>
+                </div>
               </div>
             </div>
+            <div className="my-10 prose text-left min-w-full">
+              {parse(article.content)}
+            </div>
           </div>
-          <div className="my-10 prose text-left min-w-full">
-            {parse(article.content)}
-          </div>
-        </div>
-      )}
-      <CommentForm
-        articleID={params.articleID}
-        setTriggerGetComments={setTriggerGetComments}
-      />
-      <CommentsContainer
-        articleID={params.articleID}
-        triggerGetComments={triggerGetComments}
-        setTriggerGetComments={setTriggerGetComments}
-      />
-    </div>
-  );
+        )}
+        <CommentForm
+          articleID={params.articleID}
+          setTriggerGetComments={setTriggerGetComments}
+        />
+        <CommentsContainer
+          articleID={params.articleID}
+          triggerGetComments={triggerGetComments}
+          setTriggerGetComments={setTriggerGetComments}
+        />
+      </div>
+    );
+  } else {
+    return <p className="text-gray-400">Loading</p>;
+  }
 }
 
 export default Article;
