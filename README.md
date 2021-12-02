@@ -10,6 +10,7 @@ This is the public frontend of my personal blog. This app was created as part of
 
 <p style="display: flex; justify-content: center; align-items: center;">
   <img src="./src/readme_images/home.png" width="600" title="hover text">
+  <br />
   <img src="./src/readme_images/article.png" width="600" title="hover text">
 </p>
 
