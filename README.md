@@ -9,7 +9,8 @@ This is the public frontend of my personal blog. This app was created as part of
 - [Blog Content API](https://vast-beyond-74815.herokuapp.com/articles)
 
 <p style="display: flex; justify-content: center; align-items: center;">
-  <img src="./src/readme_images/home.png" width="100%" title="hover text">
+  <img src="./src/readme_images/home.png" width="600" title="hover text">
+  <img src="./src/readme_images/article.png" width="600" title="hover text">
 </p>
 
 ## Related repositories
