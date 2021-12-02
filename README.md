@@ -8,8 +8,8 @@ This is the public frontend of my personal blog. This app was created as part of
 - [Private Blog Manager](https://secret-springs-08504.herokuapp.com/signin)
 - [Blog Content API](https://vast-beyond-74815.herokuapp.com/articles)
 
-<p style="align:center;">
-  <img src="./src/readme_images/home.png" width="350" title="hover text">
+<p style="display: flex; justify-content: center; align-items: center;">
+  <img src="./src/readme_images/home.png" width="100%" title="hover text">
 </p>
 
 ## Related repositories
