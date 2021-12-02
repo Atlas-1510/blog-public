@@ -19,8 +19,11 @@ function Article() {
     const formattedDate = article ? getFormattedDate(article.date) : null;
     return (
       <div className="flex flex-col items-center justify-center text-center">
-        {isError && <p className="text-gray-400">Something went wrong</p>}
-        {!isError && !article && <p className="text-gray-400">Loading</p>}
+        {isError && (
+          <p className="text-gray-400 text-center text-xl">
+            Something went wrong
+          </p>
+        )}
         {!isError && article && (
           <div className="flex flex-col items-center justify-center w-10/12 my-10">
             <div className="flex flex-col items-center justify-center text-center">
@@ -59,7 +62,7 @@ function Article() {
       </div>
     );
   } else {
-    return <p className="text-gray-400">Loading</p>;
+    return <p className="text-gray-400  text-center text-xl">Loading</p>;
   }
 }
 
